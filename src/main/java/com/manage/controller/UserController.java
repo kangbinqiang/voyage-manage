@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.LinkedList;
+import java.util.Queue;
 
 @RestController
 @Api(tags = "用户管理")
@@ -89,7 +91,7 @@ public class UserController extends BaseController {
     @PutMapping("/update")
     @ApiOperation(value = "修改用户信息")
     public ResponseMO updateUser(@Valid @RequestBody UserMO userMO) {
-        if (userService.updateUser(userMO.getId(),userMO.getEmail(), userMO.getMobile())) {
+        if (userService.updateUser(userMO.getId(), userMO.getEmail(), userMO.getMobile())) {
             return success();
         } else {
             return error("修改失败");
@@ -105,5 +107,6 @@ public class UserController extends BaseController {
         userService.deleteUser(id);
         return success();
     }
+
 
 }

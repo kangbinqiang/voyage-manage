@@ -1,6 +1,5 @@
 package com.manage.service.impl;
 
-import com.manage.entity.MenuDO;
 import com.manage.entity.PermissionDO;
 import com.manage.entity.RolePermissionDO;
 import com.manage.mapper.PermissionMapper;
@@ -9,7 +8,6 @@ import com.manage.model.DispatcherMO;
 import com.manage.model.PermissionMO;
 import com.manage.model.PermissionVO;
 import com.manage.service.PermissionService;
-import com.manage.service.RoleService;
 import com.manage.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +16,6 @@ import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;

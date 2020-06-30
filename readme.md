@@ -1,4 +1,6 @@
 # 电商管理系统的搭建
+前端git地址：https://github.com/kangbinqiang/shop.git
+后端git地址：https://github.com/kangbinqiang/voyage-manage.git
 
 ## 项目功能图
 

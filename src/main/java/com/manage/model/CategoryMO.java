@@ -24,4 +24,7 @@ public class CategoryMO {
     @ApiModelProperty(name = "状态")
     private Boolean cateStatus;
 
+    @ApiModelProperty(name = "父id")
+    private String parentId;
+
 }

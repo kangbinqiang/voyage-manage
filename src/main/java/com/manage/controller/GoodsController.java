@@ -3,9 +3,8 @@ package com.manage.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.manage.common.ResponseMO;
-import com.manage.model.CateMO;
-import com.manage.model.CateQueryMO;
-import com.manage.model.CategoryMO;
+import com.manage.entity.GoodsDO;
+import com.manage.model.*;
 import com.manage.service.GoodsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/goods")
@@ -36,6 +36,49 @@ public class GoodsController extends BaseController {
     @ApiOperation(value = "展示分类")
     public ResponseMO<PageInfo<CategoryMO>> listCate(@Valid @RequestBody CateQueryMO cateQueryMO) {
         PageInfo<CategoryMO> result = goodsService.listCate(cateQueryMO);
+        return success(result);
+    }
+
+
+    @GetMapping("/parent/cate/list")
+    @ApiOperation(value = "展示分类")
+    public ResponseMO<List<CategoryMO>> listParentCate() {
+        return success(goodsService.listParentCate());
+    }
+
+    @DeleteMapping("/delete/cate/{cateId}")
+    @ApiOperation(value = "删除分类")
+    public ResponseMO deleteCate(@PathVariable("cateId") String cateId) {
+        goodsService.deleteCate(cateId);
+        return success();
+    }
+
+    @GetMapping("/params/{cateId}")
+    @ApiOperation(value = "展示参数或属性")
+    public ResponseMO<List<ParamMO>> listParams(@PathVariable("cateId") String cateId, @RequestParam("type") String type) {
+        List<ParamMO> result = goodsService.listParams(cateId,type);
+        return success(result);
+    }
+
+    @PostMapping("/add/params")
+    @ApiOperation(value = "新增参数或属性")
+    public ResponseMO listParams(@Valid @RequestBody ParamMO paramMO) {
+        goodsService.addParam(paramMO);
+        return success();
+    }
+
+    @PostMapping("/add/goods")
+    @ApiOperation(value = "新增商品")
+    public ResponseMO addGoods(@Valid @RequestBody GoodsMO goodsMO) {
+        goodsService.addGoods(goodsMO);
+        return success();
+    }
+
+
+    @PostMapping("/goods/list")
+    @ApiOperation(value = "分页展示商品")
+    public ResponseMO<PageInfo<GoodsDO>> listGoods(@Valid @RequestBody GoodsQueryMO queryMO) {
+        PageInfo<GoodsDO> result = goodsService.pagingGoods(queryMO);
         return success(result);
     }
 

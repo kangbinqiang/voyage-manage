@@ -1,11 +1,11 @@
 package com.manage.model;
 
-
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+
 @Data
-public class CateQueryMO {
+public class GoodsQueryMO {
 
     @ApiModelProperty(value = "起始页数")
     private Integer pageNumber;
@@ -13,10 +13,6 @@ public class CateQueryMO {
     @ApiModelProperty(value = "页数大小")
     private Integer pageSize;
 
-    @ApiModelProperty(value = "层级")
-    private Integer cateLevel;
-
-    @ApiModelProperty(value = "分类名称")
-    private String cateName;
-
+    @ApiModelProperty(value = "商品名称")
+    private String goodsName;
 }
